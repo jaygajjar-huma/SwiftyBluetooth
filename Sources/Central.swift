@@ -200,7 +200,7 @@ extension Central {
     /// Will stop the current scan through a CBCentralManager stopScan() function call and invokes the completion
     /// closures of the original scanWithTimeout function call with a scanStopped result containing an error if something went wrong.
     public func stopScan() {
-        centralProxy.stopScan()
+        centralProxy.stopScan(error: SBError.manualScanStop)
     }
     
     /// Sometime, the bluetooth state of your iOS Device/CBCentralManagerState is in an inbetween state of either

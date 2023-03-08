@@ -138,7 +138,7 @@ extension CentralProxy {
         }
     }
     
-    func stopScan(error: SBError? = nil) {
+    func stopScan(error: SBError) {
 
         // avoid an API MISUSE warning on the console if bluetooth is powered off or unsupported
         if self.centralManager.state != .poweredOff, self.centralManager.state != .unsupported {
@@ -160,7 +160,7 @@ extension CentralProxy {
         let weakRequest = timer.userInfo as! Weak<PeripheralScanRequest>
         
         if weakRequest.value != nil {
-            self.stopScan()
+            self.stopScan(error: SBError.operationTimedOut(operation: .connectPeripheral))
         }
     }
 }
