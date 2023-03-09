@@ -103,3 +103,5 @@ extension SBError.SBBluetoothUnavailbleFailureReason {
         }
     }
 }
+
+extension SBError: Equatable { }
