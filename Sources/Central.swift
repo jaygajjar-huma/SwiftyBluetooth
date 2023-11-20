@@ -76,7 +76,7 @@ public final class Central {
     /// Unwrap with `notification.userInfo?["state"] as? CBCentralManagerState`
     public static let CentralStateChange = Notification.Name("SwiftyBluetooth_CentralStateChange")
     
-    static let CentralCBPeripheralDisconnected = Notification.Name("SwiftyBluetooth_CentralCBPeripheralDisconnected")
+    public static let CentralCBPeripheralDisconnected = Notification.Name("SwiftyBluetooth_CentralCBPeripheralDisconnected")
     
     /// The sharedInstance Singleton, you can instantiate it yourself by
     /// calling `setSharedInstanceWith(restoreIdentifier: )` which will allow you
@@ -95,7 +95,8 @@ public final class Central {
     /// launches.
     @discardableResult
     public static func setSharedInstanceWith(restoreIdentifier: String) -> Central {
-        assert(_sharedInstance == nil, "You can only set the sharedInstance of the Central once and you must do so before calling any other SwiftyBluetooth functions.")
+//        assert(_sharedInstance == nil, "You can only set the sharedInstance of the Central once and you must do so before calling any other SwiftyBluetooth functions.")
+        guard _sharedInstance == nil else { return _sharedInstance! }
         _sharedInstance = Central(stateRestoreIdentifier: restoreIdentifier)
         return _sharedInstance!
     }
